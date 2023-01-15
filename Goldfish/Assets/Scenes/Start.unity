@@ -668,8 +668,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 488234724}
   sentences:
-  - Unser mutiger Protagonist verlor seine gesamte Familie durch die radioaktive
-    Vergiftung des Ozeans Und jetzt will er Vergeltung...
+  - Our brave protagonist lost his entire family to the radioactive poisoning of
+    the ocean and now he wants revenge...
   - Und jetzt will er Vergeltung...
   typingSpeed: 0.05
   index: 0
