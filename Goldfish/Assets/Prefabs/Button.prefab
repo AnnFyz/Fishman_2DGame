@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6162672108026814957}
   - component: {fileID: 6162672108026814954}
   - component: {fileID: 6162672108026814955}
-  - component: {fileID: 6162672108026814956}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -34,12 +33,11 @@ RectTransform:
   m_Children:
   - {fileID: 6162672109106766420}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 608.27, y: 183.86}
-  m_SizeDelta: {x: 356.7, y: 209.371}
+  m_SizeDelta: {x: 356.7, y: 209.37097}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6162672108026814957
 CanvasRenderer:
@@ -92,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -101,8 +99,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 0.89411765, g: 1, b: 0, a: 1}
-    m_HighlightedColor: {r: 0, g: 0.05158162, b: 1, a: 1}
-    m_PressedColor: {r: 0.89411765, g: 1, b: 0, a: 1}
+    m_HighlightedColor: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 1}
+    m_PressedColor: {r: 0.8679245, g: 0.597991, b: 0.0040939935, a: 1}
     m_SelectedColor: {r: 0.89411765, g: 1, b: 0, a: 1}
     m_DisabledColor: {r: 0.89411765, g: 1, b: 0, a: 1}
     m_ColorMultiplier: 1
@@ -123,31 +121,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6162672108026814956}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ButtonHandler, Assembly-CSharp
         m_MethodName: LoadNewScene
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6162672108026814956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6162672108026814953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcae7c808bd35bb4f86cf2f96841e0a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startbutton: {fileID: 6162672108026814955}
 --- !u!1 &6162672109106766421
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +164,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6162672108026814952}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

@@ -6,32 +6,31 @@ using UnityEngine.UI;
 
 public class RadioactiveCharge : MonoBehaviour
 {
-    public float maxHealth = 5;
-    public int radChar { get { return currentRadChar; } }
+    public int maxHealth = 5;
+    public int RadChar { get { return currentRadChar; } }
     int currentRadChar = 0;
-    public float health { get { return currentHealth; } }
-    int currentHealth;
-    UIHealthBar healthBarScript;
-    UIProgressBar progressBarScript;
+    public float Health { get { return currentHealth; } }
+    [SerializeField] int currentHealth;
+    [SerializeField] Image healthBar;
+    [SerializeField] Image radiationBar;
 
     void Start()
     {
-        healthBarScript = FindObjectOfType<UIHealthBar>();
-        progressBarScript = FindObjectOfType<UIProgressBar>();
         currentRadChar = 0;
-        currentHealth = 5;
+        currentHealth = maxHealth;
     }
     public void ChangeRadChar()
     {
-        if (progressBarScript.progressScrollbar.size <= 1f)
+        if (radiationBar.fillAmount <= 1f)
         {
-            progressBarScript.progressScrollbar.size += 0.1f;
+            radiationBar.fillAmount += 0.1f;
         }
+
     }
 
     public void ChangeHealth(int amount)
     {
        currentHealth += amount;
-       healthBarScript.scrollbar.size = currentHealth / maxHealth;
+       healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
     }
 }

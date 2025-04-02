@@ -9,12 +9,9 @@ public class Wastes : MonoBehaviour
     [SerializeField] private float speed = 10.0f;
     private Rigidbody2D rg;
     public SpriteRenderer wasteRanSpr;
-    //public Sprite wasteNewRanSpr;
-    public Sprite[] Waste;
-    UIHealthBar scroller;
+    bool hasDamaged = false;
     void Start()
     {
-        scroller = FindObjectOfType<UIHealthBar>();
         wasteRanSpr = GetComponent<SpriteRenderer>();
         ChangeSpriteWaste();
         if (SceneManager.GetActiveScene().buildIndex == 2)
@@ -38,7 +35,7 @@ public class Wastes : MonoBehaviour
     public void ChangeSpriteWaste()
     {
         
-        wasteRanSpr.sprite = Waste[Random.Range(0, Waste.Length -1)];
+        wasteRanSpr.sprite = GameAssets.GetInstance().WasteCollection[Random.Range(0, GameAssets.GetInstance().WasteCollection.Length -1)];
     }
 
     private void Update()
@@ -51,15 +48,13 @@ public class Wastes : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        RadioactiveCharge radiaktiveChar = other.GetComponent<RadioactiveCharge>();
-        
-        if (radiaktiveChar != null)
+
+        if (other.tag == "Player" && !hasDamaged)
         {
-           radiaktiveChar.ChangeHealth(-1);
-           //scroller.collisionW = true;
-           //scroller.ChangeSize();
-           //Destroy(gameObject);
-            
+            hasDamaged = true;
+            other.GetComponent<RadioactiveCharge>().ChangeHealth(-1);
+            Destroy(this);
+
         }
 
         if (other.tag == "Bullet")

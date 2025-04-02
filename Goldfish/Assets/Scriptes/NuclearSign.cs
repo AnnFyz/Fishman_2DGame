@@ -6,20 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class NuclearSign : MonoBehaviour
 {
-    //[SerializeField] int sceneIndex;
     [SerializeField] private float speed = 10.0f;
     private Rigidbody2D rg;
-    RadioactiveCharge radiactiveChar;
-    GoldFishController sizeController;
-    UIProgressBar progressBar;
+    bool wasCollected = false;
     void Start()
     {
         rg = this.GetComponent<Rigidbody2D>();
         rg.velocity = new Vector2(-speed, 0);
-
-        radiactiveChar = FindObjectOfType<RadioactiveCharge>();
-        sizeController = FindObjectOfType<GoldFishController>();
-        progressBar = FindObjectOfType<UIProgressBar>();
     }
 
     private void Update()
@@ -33,16 +26,12 @@ public class NuclearSign : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-       if (radiactiveChar != null && other.tag== "Player")
+       if (other.tag== "Player" && !wasCollected)
        {
-          radiactiveChar.ChangeRadChar();
+          wasCollected = true;
+          other.gameObject.GetComponent<RadioactiveCharge>().ChangeRadChar();
           Destroy(gameObject);
        }
-
-        if (sizeController != null && sizeController.transform.localScale.x < 6)
-        {
-            sizeController.ChangeScale();
-        }
 
         if (other.tag == "Bullet")
         {

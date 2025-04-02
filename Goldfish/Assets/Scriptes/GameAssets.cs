@@ -4,21 +4,28 @@ using UnityEngine;
 
 public class GameAssets : MonoBehaviour
 {
-    private static GameAssets instance; // practice to get instance in Unity
+    private static GameAssets Instance; 
     public static GameAssets GetInstance()
     {
-        return instance;
+        return Instance;
     }
     private void Awake()
     {
-        instance = this;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
 
     //public Sprite waste;
     public GameObject Waste;
     public GameObject NuclearSign;
     public GameObject Enemy;
-    public Sprite[] Wastes;
+    public Sprite[] WasteCollection;
     public Sprite[] Enemies;
 
    

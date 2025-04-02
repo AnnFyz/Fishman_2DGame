@@ -5,17 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour
 {
-    [SerializeField] int sceneIndex;
+    [SerializeField] int currentSceneIndex;
     public static Vector2 screenBounds;
-    RadioactiveCharge radoaktiveChar;
-    GoldFishController fishController;
+    private static GameHandler Instance;
+    public static GameHandler GetInstance()
+    {
+        return Instance;
+    }
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     void Start()
     {
-
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
-        radoaktiveChar = FindObjectOfType<RadioactiveCharge>();
-        fishController = FindObjectOfType<GoldFishController>();
     }
 
 
@@ -23,11 +34,11 @@ public class GameHandler : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            if (sceneIndex != 4)
+            if (currentSceneIndex != 4)
             {
-                SceneManager.LoadScene(sceneIndex + 1);
+                SceneManager.LoadScene(currentSceneIndex + 1);
             }
-            else if (sceneIndex == 4)
+            else if (currentSceneIndex == 4)
             {
                 SceneManager.LoadScene(0);
             }
@@ -35,9 +46,9 @@ public class GameHandler : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            if (sceneIndex > 0)
+            if (currentSceneIndex > 0)
             {
-                SceneManager.LoadScene(sceneIndex - 1);
+                SceneManager.LoadScene(currentSceneIndex - 1);
             }
         }
 
@@ -54,5 +65,19 @@ public class GameHandler : MonoBehaviour
     }
 
 
+    public void LoadNextScene()
+    {
+        SceneManager.LoadScene(currentSceneIndex + 1);
+    }
 
+    public void LoadGoodEnding()
+    {
+        SceneManager.LoadScene(currentSceneIndex + 1);
+    }
+
+
+    public void LoadBadEnding()
+    {
+        SceneManager.LoadScene(currentSceneIndex + 1);
+    }
 }

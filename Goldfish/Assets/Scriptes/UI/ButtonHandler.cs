@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class ButtonHandler : MonoBehaviour
 {
-    public Button startbutton;
-  
     public void LoadNewScene(int index)
     {
         SceneManager.LoadScene(index);
