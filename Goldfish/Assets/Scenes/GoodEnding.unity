@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb88b4e202152b48bdcbafca59e512c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneIndex: 4
+  currentSceneIndex: 0
 --- !u!4 &560440970
 Transform:
   m_ObjectHideFlags: 0
@@ -387,7 +387,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 28724e9aca6922b4a889ef46ad60429a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dff6bcdb8e62d3940ad9662ac8daaf35, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
