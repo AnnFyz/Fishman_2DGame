@@ -36,6 +36,7 @@ public class Wastes : MonoBehaviour
     {
         
         wasteRanSpr.sprite = GameAssets.GetInstance().WasteCollection[Random.Range(0, GameAssets.GetInstance().WasteCollection.Length -1)];
+        wasteRanSpr.sortingOrder = Random.Range(-1, 1);
     }
 
     private void Update()
@@ -53,7 +54,7 @@ public class Wastes : MonoBehaviour
         {
             hasDamaged = true;
             other.GetComponent<RadioactiveCharge>().ChangeHealth(-1);
-            Destroy(this);
+            Destroy(gameObject);
 
         }
 

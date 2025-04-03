@@ -34,11 +34,11 @@ public class GameHandler : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            if (currentSceneIndex != 4)
+            if (SceneManager.GetActiveScene().buildIndex != 4)
             {
-                SceneManager.LoadScene(currentSceneIndex + 1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             }
-            else if (currentSceneIndex == 4)
+            else if (SceneManager.GetActiveScene().buildIndex == 4)
             {
                 SceneManager.LoadScene(0);
             }
@@ -46,9 +46,9 @@ public class GameHandler : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            if (currentSceneIndex > 0)
+            if (SceneManager.GetActiveScene().buildIndex > 0)
             {
-                SceneManager.LoadScene(currentSceneIndex - 1);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
             }
         }
 
@@ -67,17 +67,17 @@ public class GameHandler : MonoBehaviour
 
     public void LoadNextScene()
     {
-        SceneManager.LoadScene(currentSceneIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void LoadGoodEnding()
     {
-        SceneManager.LoadScene(currentSceneIndex + 1);
+        SceneManager.LoadScene(5);
     }
 
 
     public void LoadBadEnding()
     {
-        SceneManager.LoadScene(currentSceneIndex + 1);
+        SceneManager.LoadScene(4);
     }
 }

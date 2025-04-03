@@ -36,7 +36,7 @@ public class GoldFishController : MonoBehaviour
     {
         
         Animation();
-        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2)
+        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2 || SceneManager.GetActiveScene().buildIndex == 3)
         {
             if ((Input.GetKeyDown(KeyCode.W) || Input.GetMouseButtonDown(0)) && (transform.position.y < GameHandler.screenBounds.y / 4))
 

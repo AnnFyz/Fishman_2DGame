@@ -21,16 +21,28 @@ public class RadioactiveCharge : MonoBehaviour
     }
     public void ChangeRadChar()
     {
-        if (radiationBar.fillAmount <= 1f)
-        {
-            radiationBar.fillAmount += 0.1f;
-        }
+        radiationBar.fillAmount += 0.1f;
 
+        if (radiationBar.fillAmount >= 1f)
+        {
+            radiationBar.fillAmount = 1f;
+            GameHandler.GetInstance().LoadNextScene();
+        }
     }
 
     public void ChangeHealth(int amount)
     {
-       currentHealth += amount;
-       healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
+        currentHealth += amount;
+        if(currentHealth > 0)
+        {
+            healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
+        }
+        else
+        {
+            currentHealth = 0;
+            GameHandler.GetInstance().LoadBadEnding();
+        }
+
+     
     }
 }
