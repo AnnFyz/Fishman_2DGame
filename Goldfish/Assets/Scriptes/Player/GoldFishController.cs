@@ -35,8 +35,8 @@ public class GoldFishController : MonoBehaviour
     void Update()
     {
         
-        Animation();
-        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2 || SceneManager.GetActiveScene().buildIndex == 3)
+        //Animate();
+        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2)  //|| SceneManager.GetActiveScene().buildIndex == 3)
         {
             if ((Input.GetKeyDown(KeyCode.W) || Input.GetMouseButtonDown(0)) && (transform.position.y < GameHandler.screenBounds.y / 4))
 
@@ -46,35 +46,35 @@ public class GoldFishController : MonoBehaviour
         }
 
 
-        if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 4)
-        {
+        //if (SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 4)
+        //{
 
-            Walk();
-            if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) /*&& (transform.position.y < GameHandler.screenBounds.y / 4)*/)
+        //    Walk();
+        //    if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) /*&& (transform.position.y < GameHandler.screenBounds.y / 4)*/)
 
-            {
-                if (isGrounded == true)
-                {
-                    Jump();
-                    isGrounded = false;
-                }
-            }
+        //    {
+        //        if (isGrounded == true)
+        //        {
+        //            Jump();
+        //            isGrounded = false;
+        //        }
+        //    }
 
-            if (Input.GetMouseButtonDown(2))
-            {
-                //animator.SetBool("IsSwordPose", true);
-                StartCoroutine(ChangeSwordPos());
-                isEnemyAttacked = true;
-            }
+        //    if (Input.GetMouseButtonDown(2))
+        //    {
+        //        //animator.SetBool("IsSwordPose", true);
+        //        StartCoroutine(ChangeSwordPos());
+        //        isEnemyAttacked = true;
+        //    }
 
-            if (Input.GetMouseButtonDown(1))
-            {
+        //    if (Input.GetMouseButtonDown(1))
+        //    {
 
-                BulletLaunch();
-                //StartCoroutine(ChangeShootingPos());
+        //        BulletLaunch();
+        //        //StartCoroutine(ChangeShootingPos());
 
-            }
-        }
+        //    }
+        //}
 
     }
     private IEnumerator ChangeSwordPos()
@@ -110,7 +110,7 @@ public class GoldFishController : MonoBehaviour
 
 
 
-    void Animation()
+    void Animate()
     {
         walking = Input.GetAxis("Horizontal");
         Vector2 move = new Vector2(walking, 0);
