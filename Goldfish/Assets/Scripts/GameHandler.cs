@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameHandler : MonoBehaviour
 {
-    [SerializeField] int currentSceneIndex;
     public static Vector2 screenBounds;
     private static GameHandler Instance;
     public static GameHandler GetInstance()
@@ -51,17 +50,6 @@ public class GameHandler : MonoBehaviour
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
             }
         }
-
-
-        //if (radoaktiveChar != null && fishController != null)
-        //{
-        //    if (radoaktiveChar.radChar == 3)
-        //    {
-        //        Debug.Log("NEXTLEVEL");
-        //        SceneManager.LoadScene(sceneIndex);
-        //    }
-        //}
-
     }
 
 

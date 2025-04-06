@@ -9,13 +9,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float maxSpeed = 20.0f;
     [SerializeField] private GameObject explosion;
     private Rigidbody2D rg;
-    GoldFishController goldFishController;
     public SpriteRenderer enemyRanSpr;
     public Sprite[] Enemies;
     void Start()
     {
 
-        goldFishController = FindObjectOfType<GoldFishController>();
         enemyRanSpr = GetComponent<SpriteRenderer>();
         ChangeSpriteEnemy();
         rg = GetComponent<Rigidbody2D>();
@@ -42,19 +40,20 @@ public class EnemyController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        RadioactiveCharge controller = other.GetComponent<RadioactiveCharge>();
+        RadioactiveCharge radioactiveCont = other.GetComponent<RadioactiveCharge>();
+        FishmanController fishmanController = other.GetComponent<FishmanController>();
 
-        if (controller != null && goldFishController.isEnemyAttacked == false)
+        if (radioactiveCont != null && other.GetComponent<FishmanController>().isEnemyAttacked == false)
         {
-         controller.ChangeHealth(-1);
-            //Destroy(gameObject);
+         radioactiveCont.ChangeHealth(-1);
+         Destroy(gameObject);
 
         }
         
-        if (goldFishController.isEnemyAttacked == true)
+        if (fishmanController != null && other.GetComponent<FishmanController>().isEnemyAttacked == true)
         {
+            other.GetComponent<FishmanController>().isEnemyAttacked = false;
             Destroy(gameObject);
-            goldFishController.isEnemyAttacked = false;
         }
 
         if (other.tag == "Bullet")

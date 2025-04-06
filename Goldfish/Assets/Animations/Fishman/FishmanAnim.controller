@@ -41,11 +41,8 @@ AnimatorStateMachine:
     m_State: {fileID: 8208079320236107291}
     m_Position: {x: -100, y: 10, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -7082139935771150272}
-    m_Position: {x: 1190, y: -70, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: -2345637871295849133}
-    m_Position: {x: 360, y: -200, z: 0}
+    m_Position: {x: 390, y: -250, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8779358526291197497}
     m_Position: {x: 180, y: 220, z: 0}
@@ -95,32 +92,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1102 &-7082139935771150272
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Jumping
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 49a29a075641a43479da1c56f0a25856, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1101 &-7024726071362684403
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -650,7 +621,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Jumping 0
+  m_Name: Jumping
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -703,7 +674,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shooting 0
+  m_Name: Shooting
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
