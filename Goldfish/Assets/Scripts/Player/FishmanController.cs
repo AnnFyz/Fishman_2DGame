@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class FishmanController : MonoBehaviour
 {
@@ -10,55 +11,79 @@ public class FishmanController : MonoBehaviour
     [SerializeField] private float movSpeed = 100f;
     [SerializeField] private float rotateSpeed = 3f;
     [SerializeField] private float projectileSpeed = 10f;
-    float walking;
+    float walkingX;
     private Rigidbody2D rg2;
     [SerializeField] private bool isGrounded;
-    EnemyController enemy;
     public bool isEnemyAttacked;
     Animator animator;
     public Vector2 lookDirection = new Vector2(1, 0);
     public GameObject projectilePrefab;
     public Transform shootOriginLeft;
     public Transform shootOriginRight;
+    PlayerControlls playerInput;
+    Vector3 playerScreenPoint;
+    Vector2 clickedPos;
+    bool canMove = false;
     void Awake()
     {
         rg2 = GetComponent<Rigidbody2D>();
+        playerInput = new PlayerControlls();
+        playerInput.PlayerInput.Tap.performed += EvaluateClick;
     }
 
+    private void OnEnable()
+    {
+        playerInput.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerInput.Disable();
+    }
     private void Start()
     {
-        enemy = FindObjectOfType<EnemyController>();
         animator = GetComponent<Animator>();
+        animator.SetBool("IsRunning", true);
     }
 
     void Update()
     {
-
-        Move();
-        if ((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) /*&& (transform.position.y < GameHandler.screenBounds.y / 4)*/)
-
+        playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
+        if (playerInput.PlayerInput.ClickAndPoint.ReadValue<Vector2>().x < playerScreenPoint.x)
         {
-            if (isGrounded == true)
-            {
-                Jump();
-                isGrounded = false;
-            }
+            Debug.Log("Left");
+            lookDirection = Vector2.left;
+            animator.SetFloat("MoveX", Vector2.left.x);
         }
+        else
+        {
+            Debug.Log("Right");
+            lookDirection = Vector2.right;
+            animator.SetFloat("MoveX", Vector2.right.x);
+        }
+
 
         if (Input.GetMouseButtonDown(2))
         {
             animator.SetBool("IsSwordPose", true);
             StartCoroutine(ChangeSwordPos());
             isEnemyAttacked = true;
+
         }
 
         if (Input.GetMouseButtonDown(1))
         {
-
             BulletLaunch();
             StartCoroutine(ChangeShootingAnim());
-
         }
+
+    }
+
+    void FixedUpdate()
+    {
+        Move();
+       // rg2.MovePosition(rg2.position + velocity * Time.fixedDeltaTime);
+        //rg2.MovePosition(Vector3.MoveTowards(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), movSpeed * Time.deltaTime));
 
     }
     private IEnumerator ChangeSwordPos()
@@ -74,10 +99,10 @@ public class FishmanController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
 
-        if (gameObject != null)
+        if (other.gameObject.tag == "Enemy")
         {
 
-            Destroy(enemy);
+            Destroy(other.gameObject);
             isEnemyAttacked = false;
 
         }
@@ -92,40 +117,83 @@ public class FishmanController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
     }
 
-
-
     void Move()
     {
-        walking = Input.GetAxis("Horizontal");
-        Vector2 move = new Vector2(walking, 0);
-        if(move != Vector2.zero)
+        if (canMove && isGrounded)
         {
-            lookDirection = move.normalized;
-            animator.SetFloat("MoveX", lookDirection.x);
-        }
-
-        if (Mathf.Abs(walking) > 0.01f)
-        {
-            animator.SetBool("IsRunning", true);
-        }
-        else
-        {
-            animator.SetBool("IsRunning", false);
-        }
-
-        if (isGrounded)
-        {
-            transform.position += new Vector3(walking, 0, 0) * Time.deltaTime * movSpeed;
+            Vector3 target = Camera.main.ScreenToWorldPoint(new Vector3(clickedPos.x, transform.position.y, transform.position.z));
+            rg2.MovePosition(Vector3.MoveTowards(transform.position, target, movSpeed * Time.deltaTime));
         }
     }
+
+    //void Move()
+    //{
+    //    walking = Input.GetAxis("Horizontal");
+    //    Vector2 move = new Vector2(walking, 0);
+    //    if(move != Vector2.zero)
+    //    {
+    //        //lookDirection = move.normalized;
+    //        animator.SetFloat("MoveX", lookDirection.x);
+    //    }
+
+    //    if (Mathf.Abs(walking) > 0.01f)
+    //    {
+    //        animator.SetBool("IsRunning", true);
+    //    }
+    //    else
+    //    {
+    //        animator.SetBool("IsRunning", false);
+    //    }
+
+    //    if (isGrounded)
+    //    {
+    //        transform.position += new Vector3(walking, 0, 0) * Time.deltaTime * movSpeed;
+    //    }
+    //}
 
     void Jump()
     {
-        rg2.AddForce(Vector2.up * jumpForce);
-        animator.SetBool("IsJumping", true);
+        if (isGrounded == true)
+        {
+            rg2.AddForce(Vector2.up * jumpForce);
+            animator.SetBool("IsJumping", true);
+            isGrounded = false;
+        }
+
     }
+    void EvaluateClick(InputAction.CallbackContext context)
+    {
 
+        // if empty space or player is clicked => jump
+        // if waste or enemy is clicked => attack => check if player in range with something?  sword attack : shoot
 
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(playerInput.PlayerInput.ClickAndPoint.ReadValue<Vector2>()), Vector2.zero);
+        clickedPos = playerInput.PlayerInput.ClickAndPoint.ReadValue<Vector2>();
+        if (hit.collider != null)
+        {
+
+            Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
+            if (hit.collider.gameObject.tag == "Player")
+            {
+                canMove = false;
+                Jump();
+            }
+            else if (hit.collider.gameObject.tag == "Enemy" || hit.collider.gameObject.tag != "Waste")
+            {
+                canMove = false;
+                BulletLaunch();
+                StartCoroutine(ChangeShootingAnim());
+            }
+            else
+            {
+                canMove = true;
+            }
+        }
+        else
+        {
+            canMove = true;
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("SeaBottom"))
@@ -146,7 +214,6 @@ public class FishmanController : MonoBehaviour
         GameObject projectileObject = Instantiate(projectilePrefab, shootPos, Quaternion.identity);
         Projectile projectile = projectileObject.GetComponent<Projectile>();
         projectile.Launch(lookDirection, projectileSpeed);
-
     }
 
 }

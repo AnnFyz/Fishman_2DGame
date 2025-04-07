@@ -1,0 +1,65 @@
+{
+    "name": "PlayerControlls",
+    "maps": [
+        {
+            "name": "PlayerInput",
+            "id": "f3d81881-269d-4d78-8d8b-0f35616e2d23",
+            "actions": [
+                {
+                    "name": "ClickAndPoint",
+                    "type": "Value",
+                    "id": "1051ff37-5713-4c6f-b681-14620a4e1044",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Tap",
+                    "type": "Value",
+                    "id": "b088a50d-801d-4a3b-ab2b-626523fb2dac",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f999428d-6dc4-4142-b061-4dfb4191678c",
+                    "path": "<Pointer>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ClickAndPoint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2266ee8c-74d8-4b15-9341-f0b6e4574407",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6e8abb24-d30c-4d32-ac3b-4ce8b49ae24b",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
