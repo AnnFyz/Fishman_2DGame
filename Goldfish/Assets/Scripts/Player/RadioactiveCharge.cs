@@ -21,7 +21,7 @@ public class RadioactiveCharge : MonoBehaviour
     }
     public void ChangeRadChar()
     {
-        radiationBar.fillAmount += 1.1f;
+        radiationBar.fillAmount += 0.1f;
 
         if (radiationBar.fillAmount >= 1f)
         {

@@ -10,14 +10,13 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private GameObject explosion;
     private Rigidbody2D rg;
     public SpriteRenderer enemyRanSpr;
-    public Sprite[] Enemies;
     void Start()
     {
 
         enemyRanSpr = GetComponent<SpriteRenderer>();
         ChangeSpriteEnemy();
         rg = GetComponent<Rigidbody2D>();
-        
+
         if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             rg.velocity = new Vector2(Random.Range(-minSpeed, -maxSpeed), 0);
@@ -35,25 +34,22 @@ public class EnemyController : MonoBehaviour
     public void ChangeSpriteEnemy()
     {
 
-        enemyRanSpr.sprite = Enemies[Random.Range(0, Enemies.Length -1)];
+        // enemyRanSpr.sprite = Enemies[Random.Range(0, Enemies.Length - 1)];
+        enemyRanSpr.sprite = GameAssets.GetInstance().Enemies[Random.Range(0, GameAssets.GetInstance().Enemies.Length)];
     }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         RadioactiveCharge radioactiveCont = other.GetComponent<RadioactiveCharge>();
         FishmanController fishmanController = other.GetComponent<FishmanController>();
 
-        if (radioactiveCont != null && other.GetComponent<FishmanController>().isEnemyAttacked == false)
+        if (radioactiveCont != null && fishmanController != null)
         {
-         radioactiveCont.ChangeHealth(-1);
-         Destroy(gameObject);
+            radioactiveCont.ChangeHealth(-1);
+            if (fishmanController.isSwordPose)
+            {
+                Destroy(gameObject);
+            }
 
-        }
-        
-        if (fishmanController != null && other.GetComponent<FishmanController>().isEnemyAttacked == true)
-        {
-            other.GetComponent<FishmanController>().isEnemyAttacked = false;
-            Destroy(gameObject);
         }
 
         if (other.tag == "Bullet")

@@ -25,7 +25,7 @@ public class EnemyDeploy : MonoBehaviour
         GameObject e = Instantiate(enemies) as GameObject;
         if (SceneManager.GetActiveScene().buildIndex == 3)
         {
-            e.transform.position = new Vector2(GameHandler.screenBounds.x + offset, -GameHandler.screenBounds.y + Random.Range(offset / 2.5f, offset));
+            e.transform.position = new Vector2(GameHandler.screenBounds.x + offset, -GameHandler.screenBounds.y + Random.Range(offset / 1.5f, offset * 1.5f));
         }
     }
 

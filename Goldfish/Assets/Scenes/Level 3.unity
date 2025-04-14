@@ -353,8 +353,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.22, y: -0.26}
-  m_Size: {x: 2.38, y: 3.13}
+  m_Offset: {x: -0.047923684, y: -0.26}
+  m_Size: {x: 1.6389344, y: 3.13}
   m_Direction: 0
 --- !u!1001 &776088631
 PrefabInstance:
@@ -1010,7 +1010,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_Sprite: {fileID: 21300000, guid: d624395a6b88c53478b299c47d5a1193, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1081,8 +1081,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.29}
-  m_Size: {x: 1.75, y: 2.8}
+  m_Offset: {x: -0.06444609, y: -0.7806183}
+  m_Size: {x: 2.1477864, y: 2.1477864}
   m_Direction: 0
 --- !u!114 &1310277270247606999
 MonoBehaviour:
@@ -1114,9 +1114,9 @@ GameObject:
   - component: {fileID: 1310277270247606985}
   - component: {fileID: 1310277270247606993}
   - component: {fileID: 1310277270247606997}
+  - component: {fileID: 528118774}
   - component: {fileID: 1310277270247606998}
   - component: {fileID: 1310277270247606984}
-  - component: {fileID: 528118774}
   m_Layer: 0
   m_Name: ' Player_Fischman'
   m_TagString: Player
@@ -1147,6 +1147,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6771573841034660788, guid: 96a2960e000aac34e9a5a451c47817f1, type: 3}
   shootOriginLeft: {fileID: 31959858}
   shootOriginRight: {fileID: 356995076}
+  isSwordPose: 0
 --- !u!222 &1406807074105529855
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1687,7 +1688,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 659f863484e9d93449c09fd831355460, type: 3}
   - {fileID: 21300000, guid: 3818970ade8dc424291af64fbb7de7fa, type: 3}
   - {fileID: 21300000, guid: 6d233e0c0df75fc498d4e806773f7dc5, type: 3}
-  Enemies: []
+  Enemies:
+  - {fileID: 21300000, guid: e98ef17eb5e6c7f4e991d070681f7a19, type: 3}
+  - {fileID: 21300000, guid: 7fb9d996fb7d9994eb94fe8ddee2189a, type: 3}
 --- !u!1 &7071063683692036257
 GameObject:
   m_ObjectHideFlags: 0

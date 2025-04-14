@@ -35,7 +35,7 @@ public class Wastes : MonoBehaviour
     public void ChangeSpriteWaste()
     {
         
-        wasteRanSpr.sprite = GameAssets.GetInstance().WasteCollection[Random.Range(0, GameAssets.GetInstance().WasteCollection.Length -1)];
+        wasteRanSpr.sprite = GameAssets.GetInstance().WasteCollection[Random.Range(0, GameAssets.GetInstance().WasteCollection.Length)];
         wasteRanSpr.sortingOrder = Random.Range(-1, 1);
     }
 

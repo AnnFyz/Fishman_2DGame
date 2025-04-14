@@ -24,6 +24,7 @@ public class FishmanController : MonoBehaviour
     Vector3 playerScreenPoint;
     Vector2 clickedPos;
     bool canMove = false;
+    public bool isSwordPose = false;
     void Awake()
     {
         rg2 = GetComponent<Rigidbody2D>();
@@ -65,9 +66,7 @@ public class FishmanController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(2))
         {
-            animator.SetBool("IsSwordPose", true);
             StartCoroutine(ChangeSwordPos());
-            isEnemyAttacked = true;
 
         }
 
@@ -82,33 +81,18 @@ public class FishmanController : MonoBehaviour
     void FixedUpdate()
     {
         Move();
-       // rg2.MovePosition(rg2.position + velocity * Time.fixedDeltaTime);
-        //rg2.MovePosition(Vector3.MoveTowards(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), movSpeed * Time.deltaTime));
-
     }
     private IEnumerator ChangeSwordPos()
     {
-
         animator.SetBool("IsSwordPose", true);
+        isSwordPose = true;
         yield return new WaitForSeconds(0.5f);
 
         animator.SetBool("IsSwordPose", false);
         yield return new WaitForSeconds(0.5f);
+        isSwordPose = false;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-
-        if (other.gameObject.tag == "Enemy")
-        {
-
-            Destroy(other.gameObject);
-            isEnemyAttacked = false;
-
-        }
-
-
-    }
     private IEnumerator ChangeShootingAnim()
     {
         animator.SetBool("IsShooting", true);
@@ -122,34 +106,9 @@ public class FishmanController : MonoBehaviour
         if (canMove && isGrounded)
         {
             Vector3 target = Camera.main.ScreenToWorldPoint(new Vector3(clickedPos.x, transform.position.y, transform.position.z));
-            rg2.MovePosition(Vector3.MoveTowards(transform.position, target, movSpeed * Time.deltaTime));
+            rg2.MovePosition(Vector3.MoveTowards(transform.position, target, movSpeed * Time.fixedDeltaTime));
         }
     }
-
-    //void Move()
-    //{
-    //    walking = Input.GetAxis("Horizontal");
-    //    Vector2 move = new Vector2(walking, 0);
-    //    if(move != Vector2.zero)
-    //    {
-    //        //lookDirection = move.normalized;
-    //        animator.SetFloat("MoveX", lookDirection.x);
-    //    }
-
-    //    if (Mathf.Abs(walking) > 0.01f)
-    //    {
-    //        animator.SetBool("IsRunning", true);
-    //    }
-    //    else
-    //    {
-    //        animator.SetBool("IsRunning", false);
-    //    }
-
-    //    if (isGrounded)
-    //    {
-    //        transform.position += new Vector3(walking, 0, 0) * Time.deltaTime * movSpeed;
-    //    }
-    //}
 
     void Jump()
     {
@@ -181,8 +140,16 @@ public class FishmanController : MonoBehaviour
             else if (hit.collider.gameObject.tag == "Enemy" || hit.collider.gameObject.tag != "Waste")
             {
                 canMove = false;
-                BulletLaunch();
-                StartCoroutine(ChangeShootingAnim());
+                if(hit.collider.gameObject.tag == "Enemy" && Vector2.Distance(transform.position, hit.transform.position) < 25f)
+                {
+                    StartCoroutine(ChangeSwordPos());
+                }
+                else
+                {
+                    BulletLaunch();
+                    StartCoroutine(ChangeShootingAnim());
+                }
+               
             }
             else
             {
