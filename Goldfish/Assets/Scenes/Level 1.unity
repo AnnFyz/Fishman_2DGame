@@ -180,7 +180,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 659f863484e9d93449c09fd831355460, type: 3}
   - {fileID: 21300000, guid: 3818970ade8dc424291af64fbb7de7fa, type: 3}
   - {fileID: 21300000, guid: 6d233e0c0df75fc498d4e806773f7dc5, type: 3}
-  - {fileID: 21300000, guid: 8911034f376da0443b111780d33e7c1a, type: 3}
   Enemies: []
 --- !u!1 &519420028
 GameObject:
@@ -492,7 +491,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb88b4e202152b48bdcbafca59e512c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSceneIndex: 1
 --- !u!1 &2096369495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,22 +1282,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldFish
       objectReference: {fileID: 0}
-    - target: {fileID: 3983721081957169539, guid: 7b36dfe60720ed64da2e8a86b6f87c1e, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 3983721081957169545, guid: 7b36dfe60720ed64da2e8a86b6f87c1e, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 5155442296729893000}
     - target: {fileID: 3983721081957169545, guid: 7b36dfe60720ed64da2e8a86b6f87c1e, type: 3}
+      propertyPath: maxHealth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3983721081957169545, guid: 7b36dfe60720ed64da2e8a86b6f87c1e, type: 3}
       propertyPath: radiationBar
       value: 
       objectReference: {fileID: 41093974358976495}
-    - target: {fileID: 3983721081957169549, guid: 7b36dfe60720ed64da2e8a86b6f87c1e, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3983721081957169549, guid: 7b36dfe60720ed64da2e8a86b6f87c1e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

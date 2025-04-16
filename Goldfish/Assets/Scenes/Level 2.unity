@@ -1701,8 +1701,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: def23505db6b8f9478919ef314fb63e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minRespawnTime: 1
-  maxRespawnTime: 2
+  minRespawnTime: 0.5
+  maxRespawnTime: 1.5
 --- !u!1 &391538886652244783
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,7 +1752,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfb88b4e202152b48bdcbafca59e512c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSceneIndex: 1
 --- !u!114 &3132866485718555640
 MonoBehaviour:
   m_ObjectHideFlags: 0

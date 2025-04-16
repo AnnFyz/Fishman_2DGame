@@ -163,8 +163,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minSpeed: 10
   maxSpeed: 20
-  explosion: {fileID: 0}
-  enemyRanSpr: {fileID: 0}
-  Enemies:
-  - {fileID: 21300000, guid: 7fb9d996fb7d9994eb94fe8ddee2189a, type: 3}
-  - {fileID: 21300000, guid: e98ef17eb5e6c7f4e991d070681f7a19, type: 3}
+  explosionPref: {fileID: 2713454338861532696, guid: a7189079dd276ac4c91713d6672760cc, type: 3}

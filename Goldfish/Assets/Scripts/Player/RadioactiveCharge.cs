@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class RadioactiveCharge : MonoBehaviour
 {
     public int maxHealth = 5;
+    [SerializeField] GameObject damageParticles;
     public int RadChar { get { return currentRadChar; } }
     int currentRadChar = 0;
     public float Health { get { return currentHealth; } }
@@ -18,6 +19,7 @@ public class RadioactiveCharge : MonoBehaviour
     {
         currentRadChar = 0;
         currentHealth = maxHealth;
+        damageParticles.SetActive(false);
     }
     public void ChangeRadChar()
     {
@@ -36,6 +38,7 @@ public class RadioactiveCharge : MonoBehaviour
         if(currentHealth > 0)
         {
             healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
+            StartCoroutine(StartDamageEffect());
         }
         else
         {
@@ -44,5 +47,12 @@ public class RadioactiveCharge : MonoBehaviour
         }
 
      
+    }
+
+    IEnumerator StartDamageEffect()
+    {
+        damageParticles.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        damageParticles.SetActive(false);
     }
 }

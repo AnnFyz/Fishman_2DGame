@@ -19,11 +19,15 @@ public class NuclearParticlesDeploy : MonoBehaviour
     private void SpawnNucPar()
     {
         GameObject w = Instantiate(nuckearParticles) as GameObject;
-        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2)
+        if (SceneManager.GetActiveScene().buildIndex == 1 )
         {
             w.transform.position = new Vector2(GameHandler.screenBounds.x * 2, Random.Range(GameHandler.screenBounds.y / 3, -GameHandler.screenBounds.y));
         }
-        if (SceneManager.GetActiveScene().buildIndex == 3)
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            w.transform.position = new Vector2(GameHandler.screenBounds.x * 3, Random.Range(-GameHandler.screenBounds.y * 4, -GameHandler.screenBounds.y * 3));
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             w.transform.position = new Vector2(GameHandler.screenBounds.x * 2, Random.Range(GameHandler.screenBounds.y /2, -GameHandler.screenBounds.y/2));
         }

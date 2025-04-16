@@ -11,6 +11,8 @@ public class FishmanController : MonoBehaviour
     [SerializeField] private float movSpeed = 100f;
     [SerializeField] private float rotateSpeed = 3f;
     [SerializeField] private float projectileSpeed = 10f;
+    [SerializeField] GameObject dust;
+    [SerializeField] Transform dustOrigin;
     float walkingX;
     private Rigidbody2D rg2;
     [SerializeField] private bool isGrounded;
@@ -114,6 +116,7 @@ public class FishmanController : MonoBehaviour
     {
         if (isGrounded == true)
         {
+            Instantiate(dust, dustOrigin.position, Quaternion.identity);
             rg2.AddForce(Vector2.up * jumpForce);
             animator.SetBool("IsJumping", true);
             isGrounded = false;
@@ -168,6 +171,7 @@ public class FishmanController : MonoBehaviour
             if (isGrounded == false)
             {
                 isGrounded = true;
+                Instantiate(dust, dustOrigin.position, Quaternion.identity);
                 animator.SetBool("IsJumping", false);
             }
         }

@@ -7,9 +7,9 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] private float minSpeed = 10.0f;
     [SerializeField] private float maxSpeed = 20.0f;
-    [SerializeField] private GameObject explosion;
+    [SerializeField] private GameObject explosionPref;
     private Rigidbody2D rg;
-    public SpriteRenderer enemyRanSpr;
+    SpriteRenderer enemyRanSpr;
     void Start()
     {
 
@@ -47,14 +47,22 @@ public class EnemyController : MonoBehaviour
             radioactiveCont.ChangeHealth(-1);
             if (fishmanController.isSwordPose)
             {
-                Destroy(gameObject);
+                Instantiate(explosionPref, transform.position, Quaternion.identity);
+                StartCoroutine(DestroyEnemy());
             }
 
         }
 
-        if (other.tag == "Bullet")
+       else  if (other.tag == "Bullet")
         {
-            Destroy(gameObject);
+            Instantiate(explosionPref, transform.position, Quaternion.identity);
+            StartCoroutine(DestroyEnemy());
         }
+    }
+
+    IEnumerator DestroyEnemy()
+    {
+        yield return new WaitForSeconds(0.25f);
+        Destroy(gameObject);
     }
 }

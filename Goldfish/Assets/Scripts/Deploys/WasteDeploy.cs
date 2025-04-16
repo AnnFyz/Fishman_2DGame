@@ -20,12 +20,17 @@ public class WasteDeploy : MonoBehaviour
     {
         GameObject w = Instantiate(waste) as GameObject;
         
-        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 2)
+        if (SceneManager.GetActiveScene().buildIndex == 1) 
         {
-            w.transform.position = new Vector2(GameHandler.screenBounds.x * 2, Random.Range(GameHandler.screenBounds.y / 3, -GameHandler.screenBounds.y));
+            w.transform.position = new Vector2(GameHandler.screenBounds.x * 2, Random.Range(GameHandler.screenBounds.y / 3, -GameHandler.screenBounds.y));   
         }
 
-        if (SceneManager.GetActiveScene().buildIndex == 3)
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            w.transform.position = new Vector2(GameHandler.screenBounds.x * 3, Random.Range(-GameHandler.screenBounds.y * 4, -GameHandler.screenBounds.y * 3));
+        }
+
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
         {
             w.transform.position = new Vector2(Random.Range(GameHandler.screenBounds.x / 3, -GameHandler.screenBounds.x), GameHandler.screenBounds.y * 2);
         }
@@ -35,7 +40,8 @@ public class WasteDeploy : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(minRespawnTime, maxRespawnTime));
+
+            yield return new WaitForSeconds(Random.Range(minRespawnTime, maxRespawnTime));    
             SpawnWaste();
         }
     }
