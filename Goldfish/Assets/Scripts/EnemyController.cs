@@ -34,7 +34,6 @@ public class EnemyController : MonoBehaviour
     public void ChangeSpriteEnemy()
     {
 
-        // enemyRanSpr.sprite = Enemies[Random.Range(0, Enemies.Length - 1)];
         enemyRanSpr.sprite = GameAssets.GetInstance().Enemies[Random.Range(0, GameAssets.GetInstance().Enemies.Length)];
     }
     void OnTriggerEnter2D(Collider2D other)
@@ -48,6 +47,7 @@ public class EnemyController : MonoBehaviour
             if (fishmanController.isSwordPose)
             {
                 Instantiate(explosionPref, transform.position, Quaternion.identity);
+                SoundManager.Instance.PlaySound("ExplosionEnemy");
                 StartCoroutine(DestroyEnemy());
             }
 
@@ -56,6 +56,7 @@ public class EnemyController : MonoBehaviour
        else  if (other.tag == "Bullet")
         {
             Instantiate(explosionPref, transform.position, Quaternion.identity);
+            SoundManager.Instance.PlaySound("ExplosionEnemy");
             StartCoroutine(DestroyEnemy());
         }
     }

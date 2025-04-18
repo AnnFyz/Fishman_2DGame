@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5dd15b0ec9b0ffb4c85db864a8a231bc, type: 3}
-  m_Name: Sound_9
+  m_Name: Sound_10
   m_EditorClassIdentifier: 
-  soundName: MainMenu
-  audioClip: {fileID: 8300000, guid: e3b3abaa5485cb9409e543d094f8c846, type: 3}
-  volume: 1
-  pitch: 0.1
-  loop: 0
+  soundName: BackgroundMusic
+  audioClip: {fileID: 8300000, guid: 1d1e5f3b598a4684abf6052437184678, type: 3}
+  volume: 0.15
+  pitch: 1
+  loop: 1
   audioSource: {fileID: 0}

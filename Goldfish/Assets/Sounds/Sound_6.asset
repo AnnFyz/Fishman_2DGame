@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5dd15b0ec9b0ffb4c85db864a8a231bc, type: 3}
-  m_Name: Sound_3
+  m_Name: Sound_6
   m_EditorClassIdentifier: 
-  soundName: ExplosionEnemy
-  audioClip: {fileID: 8300000, guid: 5be78ff1b77a72c4fb05b459a2912f26, type: 3}
-  volume: 1
-  pitch: 0.1
+  soundName: NewLevel
+  audioClip: {fileID: 8300000, guid: 0efac5ef11bc0de45a4e74abef35bee9, type: 3}
+  volume: 0.5
+  pitch: 1
   loop: 0
   audioSource: {fileID: 0}

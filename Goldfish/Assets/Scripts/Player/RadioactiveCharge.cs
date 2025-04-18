@@ -23,7 +23,7 @@ public class RadioactiveCharge : MonoBehaviour
     }
     public void ChangeRadChar()
     {
-        radiationBar.fillAmount += 0.1f;
+        radiationBar.fillAmount += .1f;
 
         if (radiationBar.fillAmount >= 1f)
         {
@@ -52,6 +52,7 @@ public class RadioactiveCharge : MonoBehaviour
     IEnumerator StartDamageEffect()
     {
         damageParticles.SetActive(true);
+        SoundManager.Instance.PlaySound("DamageReceiving");
         yield return new WaitForSeconds(1.5f);
         damageParticles.SetActive(false);
     }

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5dd15b0ec9b0ffb4c85db864a8a231bc, type: 3}
-  m_Name: Sound_4
+  m_Name: Sound_2
   m_EditorClassIdentifier: 
-  soundName: DamageReceiving
-  audioClip: {fileID: 8300000, guid: fc68124c94d8d974daf102f949bcbe6a, type: 3}
-  volume: 1
-  pitch: 0.1
+  soundName: ExplosionWaste
+  audioClip: {fileID: 8300000, guid: ceb5d23fbf5612749846b2999b122499, type: 3}
+  volume: 0.5
+  pitch: 1
   loop: 0
   audioSource: {fileID: 0}

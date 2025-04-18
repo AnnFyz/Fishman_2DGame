@@ -25,14 +25,16 @@ public class SoundManager : MonoBehaviour
         {
             sound.audioSource = gameObject.AddComponent<AudioSource>();
             sound.audioSource.clip = sound.audioClip;
-
             sound.audioSource.volume = sound.volume;
             sound.audioSource.pitch = sound.pitch;
             sound.audioSource.loop = sound.loop;
-            // sound.audioSource.Play();
         }
     }
 
+    private void Start()
+    {
+        PlaySound("BackgroundMusic");
+    }
     public void PlaySound(string soundName)
     {
         SoundSO s = System.Array.Find(sounds, sound => sound.soundName == soundName);
@@ -61,5 +63,19 @@ public class SoundManager : MonoBehaviour
             s.audioSource.Stop();
         }
 
+    }
+
+    public SoundSO GetSound(string soundName)
+    {
+        SoundSO s = System.Array.Find(sounds, sound => sound.soundName == soundName);
+        if (s == null)
+        {
+            Debug.Log("Sound is not found");
+            return null;
+        }
+        else
+        {
+            return s;
+        }
     }
 }

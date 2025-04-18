@@ -4989,7 +4989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25cc0bf7891532d45982be1f7c20308d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swimAmount: 70
+  swimAmount: 80
 --- !u!50 &3983721081957169544
 Rigidbody2D:
   serializedVersion: 4
@@ -5029,7 +5029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd549dcd8b8f94446a53d5b887977bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 30
   damageParticles: {fileID: 449889322447952428}
   currentHealth: 0
   healthBar: {fileID: 0}

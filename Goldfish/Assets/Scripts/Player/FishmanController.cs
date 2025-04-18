@@ -87,6 +87,7 @@ public class FishmanController : MonoBehaviour
     private IEnumerator ChangeSwordPos()
     {
         animator.SetBool("IsSwordPose", true);
+        SoundManager.Instance.PlaySound("SwordAttack");
         isSwordPose = true;
         yield return new WaitForSeconds(0.5f);
 
@@ -98,6 +99,7 @@ public class FishmanController : MonoBehaviour
     private IEnumerator ChangeShootingAnim()
     {
         animator.SetBool("IsShooting", true);
+        SoundManager.Instance.PlaySound("ProjectileShoot");
         yield return new WaitForSeconds(0.5f);
         animator.SetBool("IsShooting", false);
         yield return new WaitForSeconds(0.5f);
@@ -117,6 +119,7 @@ public class FishmanController : MonoBehaviour
         if (isGrounded == true)
         {
             Instantiate(dust, dustOrigin.position, Quaternion.identity);
+            SoundManager.Instance.PlaySound("Jump");
             rg2.AddForce(Vector2.up * jumpForce);
             animator.SetBool("IsJumping", true);
             isGrounded = false;

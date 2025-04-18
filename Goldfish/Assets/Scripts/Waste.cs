@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Wastes : MonoBehaviour
+public class Waste : MonoBehaviour
 {
     [SerializeField] private float speed = 10.0f;
     [SerializeField] GameObject explosionPref;
@@ -56,6 +56,7 @@ public class Wastes : MonoBehaviour
             hasDamaged = true;
             other.GetComponent<RadioactiveCharge>().ChangeHealth(-1);
             Instantiate(explosionPref, transform.position, Quaternion.identity);
+            SoundManager.Instance.PlaySound("ExplosionWaste");
             Destroy(gameObject);
 
         }
@@ -63,6 +64,7 @@ public class Wastes : MonoBehaviour
         else if (other.tag == "Bullet")
         {
             Instantiate(explosionPref, transform.position, Quaternion.identity);
+            SoundManager.Instance.PlaySound("ExplosionWaste");
             Destroy(gameObject);
         }
     }

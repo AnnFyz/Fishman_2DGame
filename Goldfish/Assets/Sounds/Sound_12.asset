@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5dd15b0ec9b0ffb4c85db864a8a231bc, type: 3}
-  m_Name: Sound_7
+  m_Name: Sound_12
   m_EditorClassIdentifier: 
-  soundName: SwordAttack
-  audioClip: {fileID: 8300000, guid: 601bb9f21b4d49341aeff57b4abb67f2, type: 3}
-  volume: 1
-  pitch: 0.1
+  soundName: BadEnding
+  audioClip: {fileID: 8300000, guid: e0c8841b18b790943971095e01aede60, type: 3}
+  volume: 0.15
+  pitch: 1
   loop: 0
   audioSource: {fileID: 0}

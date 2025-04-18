@@ -22,12 +22,12 @@ public class WasteDeploy : MonoBehaviour
         
         if (SceneManager.GetActiveScene().buildIndex == 1) 
         {
-            w.transform.position = new Vector2(GameHandler.screenBounds.x * 2, Random.Range(GameHandler.screenBounds.y / 3, -GameHandler.screenBounds.y));   
+            w.transform.position = new Vector2(GameHandler.screenBounds.x * 2, Random.Range(-GameHandler.screenBounds.y * 0.85f, GameHandler.screenBounds.y /4f)); 
         }
 
         else if (SceneManager.GetActiveScene().buildIndex == 2)
         {
-            w.transform.position = new Vector2(GameHandler.screenBounds.x * 3, Random.Range(-GameHandler.screenBounds.y * 4, -GameHandler.screenBounds.y * 3));
+            w.transform.position = new Vector2(GameHandler.screenBounds.x * 1.5f, Random.Range(-GameHandler.screenBounds.y * 2, -GameHandler.screenBounds.y * 1));
         }
 
         else if (SceneManager.GetActiveScene().buildIndex == 3)

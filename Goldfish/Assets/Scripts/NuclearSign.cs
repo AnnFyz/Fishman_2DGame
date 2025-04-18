@@ -44,13 +44,8 @@ public class NuclearSign : MonoBehaviour
           wasCollected = true;
           other.gameObject.GetComponent<RadioactiveCharge>().ChangeRadChar();
           Instantiate(particlesPref, transform.position, Quaternion.identity);
+          SoundManager.Instance.PlaySound("Pickup");
           Destroy(gameObject);
        }
-
-        else if (other.tag == "Bullet")
-        {
-            Instantiate(particlesPref, transform.position, Quaternion.identity);
-            Destroy(gameObject);
-        }
     }
 }

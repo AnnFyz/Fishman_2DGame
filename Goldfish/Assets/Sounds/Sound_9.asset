@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5dd15b0ec9b0ffb4c85db864a8a231bc, type: 3}
-  m_Name: Sound_1
+  m_Name: Sound_9
   m_EditorClassIdentifier: 
-  soundName: Pickup
-  audioClip: {fileID: 8300000, guid: 886c95d79baa75846ad22c95ddd1bc32, type: 3}
-  volume: 1
-  pitch: 0.1
+  soundName: MainMenu
+  audioClip: {fileID: 8300000, guid: e3b3abaa5485cb9409e543d094f8c846, type: 3}
+  volume: 0.5
+  pitch: 1
   loop: 0
   audioSource: {fileID: 0}
