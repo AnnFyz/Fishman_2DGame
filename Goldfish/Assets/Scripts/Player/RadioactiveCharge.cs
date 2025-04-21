@@ -28,7 +28,14 @@ public class RadioactiveCharge : MonoBehaviour
         if (radiationBar.fillAmount >= 1f)
         {
             radiationBar.fillAmount = 1f;
-            GameHandler.GetInstance().LoadNextScene();
+            if(SceneManager.GetActiveScene().buildIndex == 3)
+            {
+                GameHandler.GetInstance().LoadGoodEnding();
+            }
+            else
+            {
+                GameHandler.GetInstance().LoadNextScene();
+            }
         }
     }
 

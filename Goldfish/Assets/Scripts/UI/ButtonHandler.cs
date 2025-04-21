@@ -26,13 +26,14 @@ public class ButtonHandler : MonoBehaviour
     IEnumerator StartLoadingNewScene(int index)
     {
         // loop over 1 second
-        for (float i = 0, j = 1f; i <= 1; i += Time.deltaTime, j -= Time.deltaTime)
+        for (float i = 0, j = 1f; i <= 1; i += Time.unscaledDeltaTime, j -= Time.unscaledDeltaTime)
         {
             // set color with i as alpha
             image.color = new Color(image.color.r, image.color.b, image.color.g, i);
             yield return null;
         }
 
+        Time.timeScale = 1;
         SceneManager.LoadScene(index);
     }
 
@@ -42,7 +43,7 @@ public class ButtonHandler : MonoBehaviour
         if (fadeAway)
         {
             // loop over 1 second backwards
-            for (float i = 1; i >= 0; i -= Time.deltaTime)
+            for (float i = 1; i >= 0; i -= Time.unscaledDeltaTime)
             {
                 // set color with i as alpha
                 image.color = new Color(image.color.r, image.color.b, image.color.g, i);
@@ -53,7 +54,7 @@ public class ButtonHandler : MonoBehaviour
         else
         {
             // loop over 1 second
-            for (float i = 0; i <= 1; i += Time.deltaTime)
+            for (float i = 0; i <= 1; i += Time.unscaledDeltaTime)
             {
                 // set color with i as alpha
                 image.color = new Color(image.color.r, image.color.b, image.color.g, i);

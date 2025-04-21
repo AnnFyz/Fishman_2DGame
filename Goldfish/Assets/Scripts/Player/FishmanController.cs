@@ -66,17 +66,17 @@ public class FishmanController : MonoBehaviour
         }
 
 
-        if (Input.GetMouseButtonDown(2))
-        {
-            StartCoroutine(ChangeSwordPos());
+        //if (Input.GetMouseButtonDown(2))
+        //{
+        //    StartCoroutine(ChangeSwordPos());
 
-        }
+        //}
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            BulletLaunch();
-            StartCoroutine(ChangeShootingAnim());
-        }
+        //if (Input.GetMouseButtonDown(1))
+        //{
+        //    BulletLaunch();
+        //    StartCoroutine(ChangeShootingAnim());
+        //}
 
     }
 
