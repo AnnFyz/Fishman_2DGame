@@ -46,6 +46,7 @@ public class EnemyController : MonoBehaviour
             radioactiveCont.ChangeHealth(-1);
             if (fishmanController.isSwordPose)
             {
+                Debug.Log("Enemy was attacked");
                 Instantiate(explosionPref, transform.position, Quaternion.identity);
                 SoundManager.Instance.PlaySound("ExplosionEnemy");
                 StartCoroutine(DestroyEnemy());

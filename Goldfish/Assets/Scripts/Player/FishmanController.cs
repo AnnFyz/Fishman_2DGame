@@ -6,10 +6,8 @@ using UnityEngine.InputSystem;
 
 public class FishmanController : MonoBehaviour
 {
-    [SerializeField] private float swimAmount = 100f;
     [SerializeField] private float jumpForce = 10000f;
     [SerializeField] private float movSpeed = 100f;
-    [SerializeField] private float rotateSpeed = 3f;
     [SerializeField] private float projectileSpeed = 10f;
     [SerializeField] GameObject dust;
     [SerializeField] Transform dustOrigin;
@@ -54,30 +52,14 @@ public class FishmanController : MonoBehaviour
         playerScreenPoint = Camera.main.WorldToScreenPoint(transform.position);
         if (playerInput.PlayerInput.ClickAndPoint.ReadValue<Vector2>().x < playerScreenPoint.x)
         {
-            Debug.Log("Left");
             lookDirection = Vector2.left;
             animator.SetFloat("MoveX", Vector2.left.x);
         }
         else
         {
-            Debug.Log("Right");
             lookDirection = Vector2.right;
             animator.SetFloat("MoveX", Vector2.right.x);
         }
-
-
-        //if (Input.GetMouseButtonDown(2))
-        //{
-        //    StartCoroutine(ChangeSwordPos());
-
-        //}
-
-        //if (Input.GetMouseButtonDown(1))
-        //{
-        //    BulletLaunch();
-        //    StartCoroutine(ChangeShootingAnim());
-        //}
-
     }
 
     void FixedUpdate()
@@ -137,25 +119,17 @@ public class FishmanController : MonoBehaviour
         if (hit.collider != null)
         {
 
-            Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
+            //Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
             if (hit.collider.gameObject.tag == "Player")
             {
                 canMove = false;
                 Jump();
             }
-            else if (hit.collider.gameObject.tag == "Enemy" || hit.collider.gameObject.tag != "Waste")
+            else if (hit.collider.gameObject.tag == "Enemy" || hit.collider.gameObject.tag == "Waste")
             {
                 canMove = false;
-                if(hit.collider.gameObject.tag == "Enemy" && Vector2.Distance(transform.position, hit.transform.position) < 25f)
-                {
-                    StartCoroutine(ChangeSwordPos());
-                }
-                else
-                {
-                    BulletLaunch();
-                    StartCoroutine(ChangeShootingAnim());
-                }
-               
+                BulletLaunch();
+                StartCoroutine(ChangeShootingAnim());
             }
             else
             {
