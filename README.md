@@ -5,7 +5,11 @@ This is a 2D game developed for both mobile and desktop platforms using the Unit
 * Clone or download the repository.
 * Open the project in Unity.
 * You can also try the playable build available here: [Insert Download Link]
-## How users can play the game
-You can play the desktop version using only a left mouse click. You can play the mobile Android version using tap. 
-## Authors
-The project was developed by me, I implemented all mechanics and game logic. All images and animations (except visual effects) were created by  Mikheil Tugushi.
+## 🎮 How to Play
+* Desktop Version: Use the left mouse click to interact with the game.
+* Mobile (Android) Version: Play using tap gestures on your screen.
+## 👥 Authors
+
+* Anna Yadygina: Responsible for all core gameplay mechanics and game logic implementation.
+
+* Mikheil Tugushi: Designed and created all visuals and animations (excluding visual effects).
