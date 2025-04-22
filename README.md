@@ -11,5 +11,4 @@ This is a 2D game developed for both mobile and desktop platforms using the Unit
 ## 👥 Authors
 
 * Anna Yadygina: Responsible for all core gameplay mechanics and game logic implementation.
-
 * Mikheil Tugushi: Designed and created all visuals and animations (excluding visual effects).
