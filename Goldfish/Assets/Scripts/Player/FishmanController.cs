@@ -6,25 +6,29 @@ using UnityEngine.InputSystem;
 
 public class FishmanController : MonoBehaviour
 {
-    [SerializeField] private float jumpForce = 10000f;
+    [Header("Movement Settings")]
     [SerializeField] private float movSpeed = 100f;
-    [SerializeField] private float projectileSpeed = 10f;
+    bool canMove = false;
+    PlayerControlls playerInput;
+    Vector3 playerScreenPoint;
+    Vector2 lookDirection = new Vector2(1, 0);
+    Vector2 clickedPos;
+    private Rigidbody2D rg2;
+    [Header("Jump Settings")]
+    [SerializeField] private float jumpForce = 10000f;
+    [SerializeField] private bool isGrounded;
+    [Header("Dust Effect")]
     [SerializeField] GameObject dust;
     [SerializeField] Transform dustOrigin;
-    float walkingX;
-    private Rigidbody2D rg2;
-    [SerializeField] private bool isGrounded;
-    public bool isEnemyAttacked;
-    Animator animator;
-    public Vector2 lookDirection = new Vector2(1, 0);
+    [Header("Shooting Mechanic")]
+    [SerializeField] private float projectileSpeed = 10f;
     public GameObject projectilePrefab;
     public Transform shootOriginLeft;
     public Transform shootOriginRight;
-    PlayerControlls playerInput;
-    Vector3 playerScreenPoint;
-    Vector2 clickedPos;
-    bool canMove = false;
-    public bool isSwordPose = false;
+    Animator animator;
+    //Sword Mechanic
+    bool _isSwordPose;
+    public bool IsSwordPose => _isSwordPose;
     void Awake()
     {
         rg2 = GetComponent<Rigidbody2D>();
@@ -70,12 +74,12 @@ public class FishmanController : MonoBehaviour
     {
         animator.SetBool("IsSwordPose", true);
         SoundManager.Instance.PlaySound("SwordAttack");
-        isSwordPose = true;
+        _isSwordPose = true;
         yield return new WaitForSeconds(0.5f);
 
         animator.SetBool("IsSwordPose", false);
         yield return new WaitForSeconds(0.5f);
-        isSwordPose = false;
+        _isSwordPose = false;
     }
 
     private IEnumerator ChangeShootingAnim()

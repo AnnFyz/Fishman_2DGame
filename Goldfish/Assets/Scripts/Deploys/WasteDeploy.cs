@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class WasteDeploy : MonoBehaviour
 {
-
     [SerializeField] private float minRespawnTime = 1.0f;
     [SerializeField] private float maxRespawnTime = 2.0f;
     GameObject waste;

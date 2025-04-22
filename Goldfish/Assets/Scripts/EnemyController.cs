@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour
 {
+    [Header("Movement Settings")]
     [SerializeField] private float minSpeed = 10.0f;
     [SerializeField] private float maxSpeed = 20.0f;
+    [Header("Explosion Effect")]
     [SerializeField] private GameObject explosionPref;
     private Rigidbody2D rg;
     SpriteRenderer enemyRanSpr;
@@ -44,9 +46,8 @@ public class EnemyController : MonoBehaviour
         if (radioactiveCont != null && fishmanController != null)
         {
             radioactiveCont.ChangeHealth(-1);
-            if (fishmanController.isSwordPose)
+            if (fishmanController.IsSwordPose)
             {
-                Debug.Log("Enemy was attacked");
                 Instantiate(explosionPref, transform.position, Quaternion.identity);
                 SoundManager.Instance.PlaySound("ExplosionEnemy");
                 StartCoroutine(DestroyEnemy());

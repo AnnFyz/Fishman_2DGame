@@ -6,19 +6,20 @@ using UnityEngine.UI;
 
 public class RadioactiveCharge : MonoBehaviour
 {
-    public int maxHealth = 5;
-    [SerializeField] GameObject damageParticles;
-    public int RadChar { get { return currentRadChar; } }
-    int currentRadChar = 0;
-    public float Health { get { return currentHealth; } }
-    [SerializeField] int currentHealth;
+    [Header("UI")]
     [SerializeField] Image healthBar;
     [SerializeField] Image radiationBar;
+    [Header("Health")]
+    [SerializeField] int maxHealth = 5;
+    [Header("Damage Effect")]
+    [SerializeField] GameObject damageParticles;
+    int _currentRadChar = 0;
+    int _currentHealth;
 
     void Start()
     {
-        currentRadChar = 0;
-        currentHealth = maxHealth;
+        _currentRadChar = 0;
+        _currentHealth = maxHealth;
         damageParticles.SetActive(false);
     }
     public void ChangeRadChar()
@@ -41,15 +42,15 @@ public class RadioactiveCharge : MonoBehaviour
 
     public void ChangeHealth(int amount)
     {
-        currentHealth += amount;
-        if(currentHealth > 0)
+        _currentHealth += amount;
+        if(_currentHealth > 0)
         {
-            healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
+            healthBar.fillAmount = (float)_currentHealth / (float)maxHealth;
             StartCoroutine(StartDamageEffect());
         }
         else
         {
-            currentHealth = 0;
+            _currentHealth = 0;
             GameHandler.GetInstance().LoadBadEnding();
         }
 
