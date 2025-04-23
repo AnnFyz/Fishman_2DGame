@@ -25,7 +25,7 @@ public class NuclearParticlesDeploy : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().buildIndex == 2)
         {
-            w.transform.position = new Vector2(GameHandler.screenBounds.x * 1.25f, Random.Range(-GameHandler.screenBounds.y * 2f, -GameHandler.screenBounds.y * 1f));
+            w.transform.position = new Vector2(GameHandler.screenBounds.x * 1.25f, Random.Range(-GameHandler.screenBounds.y * 3f, -GameHandler.screenBounds.y * 1.25f));
         }
         else if (SceneManager.GetActiveScene().buildIndex == 3)
         {

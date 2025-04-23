@@ -2058,7 +2058,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8593687208092959009, guid: 10837f4acbe9a074f94565f7f4bc8f2b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -112.66
+      value: -112.65997
       objectReference: {fileID: 0}
     - target: {fileID: 8593687208092959009, guid: 10837f4acbe9a074f94565f7f4bc8f2b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2153,7 +2153,7 @@ GameObject:
   - component: {fileID: 13229595751188980}
   - component: {fileID: 5719378107577523467}
   m_Layer: 0
-  m_Name: Level
+  m_Name: Deploys
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
